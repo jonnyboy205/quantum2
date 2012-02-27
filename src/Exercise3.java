@@ -17,17 +17,21 @@ public class Exercise3 {
 		}	
 		
 		if (Exercise3Tester.debugging() == true){
-			//print out entries of matrix u
-			System.out.println("u matrix");
-			System.out.println("------------");
-			for (int i=0; i<u.length; i++){
-				for (int j=0; j<u.length; j++){
-					System.out.println("u_" + i + j + " = " + u[i][j]);
-				}
-			}
-			System.out.println();
+			printU();
 		}
 }
+
+	private void printU() {
+		//print out entries of matrix u
+		System.out.println("u matrix");
+		System.out.println("------------");
+		for (int i=0; i<u.length; i++){
+			for (int j=0; j<u.length; j++){
+				System.out.println("u_" + i + j + " = " + u[i][j]);
+			}
+		}
+		System.out.println();
+	}
 	
 	public void run(){
 		

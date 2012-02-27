@@ -24,7 +24,7 @@ public class Exercise3Tester {
 		}
 		
 		Exercise3 myExercise3 = new Exercise3(input);
-//		myExercise3.run();
+		myExercise3.run();
 	}
 
 	private static Complex getComplex(String s) {
