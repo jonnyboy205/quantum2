@@ -26,9 +26,10 @@ public class Exercise3Tester {
 		Exercise3 myExercise3 = new Exercise3(input);
 		boolean equivalent = myExercise3.run();
 		
-		if (debugging()){
-			System.out.println("equivalent = " + equivalent);
-		}
+		if (equivalent)
+			System.out.println("YES");
+		else
+			System.out.println("NO");
 	}
 
 	private static Complex getComplex(String s) {

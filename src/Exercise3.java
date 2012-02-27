@@ -70,6 +70,7 @@ public class Exercise3 {
 		if (Exercise3Tester.debugging()){
 			System.out.println("norm0 = " + norm0);
 			System.out.println("norm1 = " + norm1);
+			System.out.println();
 		}
 		
 		return equivalent;
