@@ -4,10 +4,6 @@ public class Exercise3 {
 	private double[][] u;
 	private boolean DEBUG = true;
 	
-//	public Exercise3(double[][] u){
-//		this.u = u;
-//	}
-	
 	public Exercise3(double[] input){
 		u = new double[2][2];
 		
@@ -20,7 +16,7 @@ public class Exercise3 {
 			}
 			u[a][b++] = input[i];
 			if (DEBUG == true){
-				//print out 
+				//print out entries of matrix u
 				System.out.println("u_" + a + (b-1) + " = " + u[a][b-1]);
 			}
 		}
