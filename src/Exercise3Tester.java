@@ -1,7 +1,7 @@
 
 public class Exercise3Tester {
 
-	private boolean debug;
+	private static boolean debug = true;
 	
 	/**
 	 * @param args
@@ -34,7 +34,11 @@ public class Exercise3Tester {
 		
 		//let's say I want to parse the second way in the hw
 		//with parens
-		String[] realAndImag = s.split("[(,)]");
+		String[] realAndImagTemp = s.split("[(,)]");
+		String[] realAndImag = new String[realAndImagTemp.length - 1];
+		for (int i=0; i<realAndImag.length; i++){
+			realAndImag[i] = realAndImagTemp[i+1];
+		}
 //		for (int i=0; i<realAndImag.length; i++){
 //			realAndImag[i] = removeParens(realAndImag[i]);
 //		}
@@ -42,10 +46,13 @@ public class Exercise3Tester {
 		ret.setRe(Double.parseDouble(realAndImag[0]));
 		ret.setIm(Double.parseDouble(realAndImag[1]));
 		
+		if (debugging())
+			System.out.println(ret);
+		
 		return ret;
 	}
 	
-	public boolean debugging(){
+	public static boolean debugging(){
 		return debug;
 	}
 
