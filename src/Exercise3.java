@@ -40,9 +40,37 @@ public class Exercise3 {
 		boolean equivalent = false;
 		
 		//TODO actual calculation
-//		Complex[] e = new Complex();
-//		
-//		double norm = norm(e);
+		Complex[] eU0 = new Complex[2];
+		Complex[] eU1 = new Complex[2];
+		Complex[] eU30 = new Complex[2];
+		Complex[] eU31 = new Complex[2];
+		
+		Complex qubit00 = new Complex(1, 0);
+		Complex qubit01 = new Complex(0, 0);
+		Complex[] qubit0 = {qubit00, qubit01};
+		
+		Complex qubit10 = new Complex(0, 0);
+		Complex qubit11 = new Complex(1, 0);
+		Complex[] qubit1 = {qubit10, qubit11};
+		
+		eU0 = matrixProduct2by1(u, qubit0);
+		eU1 = matrixProduct2by1(u, qubit1);
+		
+		Complex[][] u3 = calculateU3();
+		eU30 = matrixProduct2by1(u3, qubit0);
+		eU31 = matrixProduct2by1(u3, qubit1);
+		
+		double norm0 = norm(vectorSubtraction(eU0, eU30));
+		double norm1 = norm(vectorSubtraction(eU1, eU31));
+		
+		if (norm0 < 0.0001 && norm1 < 0.0001){
+			equivalent = true;
+		}
+		
+		if (Exercise3Tester.debugging()){
+			System.out.println("norm0 = " + norm0);
+			System.out.println("norm1 = " + norm1);
+		}
 		
 		return equivalent;
 	}
@@ -61,10 +89,16 @@ public class Exercise3 {
 			return null;
 		
 		Complex[][] product = new Complex[2][2];
+		for (int i=0; i<2; i++){
+			for (int j=0; j<2; j++){
+				product[i][j] = new Complex(0, 0);
+			}
+		}
+		
 		for (int rowIndex=0; rowIndex<2; rowIndex++){
 			for (int columnIndex=0; columnIndex<2; columnIndex++){
 				for (int a=0; a<2; a++){
-					product[rowIndex][columnIndex] = m1[rowIndex][a].mul(m2[a][columnIndex]);
+					product[rowIndex][columnIndex] = product[rowIndex][columnIndex].add(m1[rowIndex][a].mul(m2[a][columnIndex]));
 				}
 			}
 		}
@@ -76,13 +110,35 @@ public class Exercise3 {
 			return null;
 		
 		Complex[] product = new Complex[2];
+		product[0] = new Complex(0, 0);
+		product[1] = new Complex(0, 0);
+		
 		for (int rowIndex=0; rowIndex<2; rowIndex++){
 			for (int a=0; a<2; a++){
-				product[rowIndex] = m1[rowIndex][a].mul(m2[a]);
+				product[rowIndex] = product[rowIndex].add(m1[rowIndex][a].mul(m2[a]));
 			}
 		}
 		
 		return product;
+	}
+	
+	/**
+	 * returns subtraction of two vectors of equal dimension.
+	 * @param v1
+	 * @param v2
+	 * @return
+	 */
+	private Complex[] vectorSubtraction(Complex[] v1, Complex[] v2){
+		if (v1.length!=v2.length)
+			return null;
+		
+		Complex[] ret = new Complex[v1.length];
+		
+		for (int i=0; i<v1.length; i++){
+			ret[i] = v1[i].sub(v2[i]);
+		}
+		
+		return ret;
 	}
 	
 	private double norm(Complex[] vector){

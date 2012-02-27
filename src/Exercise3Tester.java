@@ -24,7 +24,11 @@ public class Exercise3Tester {
 		}
 		
 		Exercise3 myExercise3 = new Exercise3(input);
-		myExercise3.run();
+		boolean equivalent = myExercise3.run();
+		
+		if (debugging()){
+			System.out.println("equivalent = " + equivalent);
+		}
 	}
 
 	private static Complex getComplex(String s) {
