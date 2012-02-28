@@ -4,6 +4,18 @@ Prof. Papageorgiou
 February 28, 2012
 Homework #2 Programming README
 
+To use my program, unzip the folder, and compile all files with:
+
+javac *.java
+
+Then run it with:
+
+java Exercise3Tester arg0 arg1 arg2 arg3
+
+where arg0, arg1, arg2, and arg3 are of the form :
+
+(real,imag) (real,imag) (real,imag) (real,imag)
+
 Test cases(Input & Output):
 
 X = (0,0) (1,0) (1,0) (0,0), YES
@@ -12,6 +24,8 @@ Z = (1,0) (0,0) (0,0) (-1,0), YES
 H = (0.7071,0) (0.7071,0) (0.7071,0) (-0.7071,0), YES
 S = (1,0) (0,0) (0,0) (0,1), NO
 T = (1,0) (0,1) (0,0) (0.7071,0.7071), NO
+
+Example Outputs:
 
 H Run Output(+ Debug Output)
 ----------------------------
@@ -58,6 +72,4 @@ NO
 
 Notes
 -----
-To solve this problem, I calculated U|0>-U^3|0> and U|0>-U^3|1>, 
-and checked whether they were less than an error of 10^-4. I was
-able to do this because only w
+To solve this problem, I calculated U|0>-U^3|0> and U|0>-U^3|1>, and checked whether they were less than an error of 10^-4. I was able to do this because checking |0> and |1> essentially checks the maximum and minimum values of C|phi> for all |phi>.
