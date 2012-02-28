@@ -4,6 +4,8 @@ Prof. Papageorgiou
 February 28, 2012
 Homework #2 Programming README
 
+Included files: Complex.java, Exercise3.java, Exercise3Tester.java
+
 To use my program, unzip the folder, and compile all files with:
 
 javac *.java
